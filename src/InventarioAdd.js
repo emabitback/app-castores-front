@@ -12,18 +12,14 @@ import { Container } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import getUrl from './global';
 
 
-
-const url="http://192.168.0.4:8080/inventary/add";
 
 function InventarioAdd () {
 
     //const resetControls = (productControl, quantityControl, movementControl) => {
-    const resetControls = () => {
-        document.getElementById("formProduct").reset();
-
-    }
+    const resetControls = () => { document.getElementById("formProduct").reset() }
 
     
     const showSwal = () => {
@@ -56,7 +52,7 @@ function InventarioAdd () {
             {"product":{"id":idProduct},"user":{"id":1},"quantity":stock,"status":movementType,"date": dateCreated}
 
             axios
-            .post(url, jsonTemplate, options)
+            .post(getUrl() + 'inventary/add', jsonTemplate, options)
             .then(response => {
                 console.log(response.data);
                 resetControls()

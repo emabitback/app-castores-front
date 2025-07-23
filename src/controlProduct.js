@@ -1,8 +1,8 @@
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import getUrl from './global';
  
-const url="http://192.168.0.4:8080/product/list";
 
  function ControlProduct() {
       const [options, setOptions] = useState([]);
@@ -10,7 +10,7 @@ const url="http://192.168.0.4:8080/product/list";
 
 
     useEffect(() => {
-        axios.post(url).then((response) => {
+        axios.post(getUrl() + 'product/list').then((response) => {
             console.log(response)
           setOptions(response.data);
         });

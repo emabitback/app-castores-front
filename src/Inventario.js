@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import getUrl from './global';
 
-const url="http://192.168.0.4:8080/inventary/list";
 
 function Inventario () {
     const [post, setPost] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.post(url).then((response) => {
+        axios.post(getUrl() + 'inventary/list').then((response) => {
             //console.log("Inventario", response)
           setPost(response.data);
         });
@@ -35,7 +35,7 @@ function Inventario () {
         { field: 'quantity', headerName: 'Cantidad', width: 80 },
         { headerName: 'Status', width: 100 ,
             renderCell: function(data) {
-                if (data.row.status == 1) {
+                if (data.row.status === 1) {
                     return (<Badge bg="success">Entrada</Badge>);
                 } else {
                     return (<Badge bg="danger">Salida</Badge>);

@@ -10,11 +10,8 @@ import { Container } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import getUrl from './global';
 
-
-
-
-const url="http://192.168.0.4:8080/product/add";
 
 function Producto () {
 
@@ -37,33 +34,29 @@ function Producto () {
   }
 
     const add = (event) => {
-       
         const input = document.getElementById('producto');
         console.log(input.value)
 
         if (input.value !== '') {
             axios
-            .post(url, { name: input.value,status: 1} )
+            .post(getUrl() + 'product/add', { name: input.value,status: 1} )
             .then(response => {
                 console.log(response.data); 
                 showSwal()
                 input.value = ''
-                
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
                 showSwalError()
-                
             });
+
         } else {
             withReactContent(Swal).fire({
-            icon: "error",
-            text: "Ingresa un nombre de producto por favor",
-            showConfirmButton: true,
+                icon: "error",
+                text: "Ingresa un nombre de producto por favor",
+                showConfirmButton: true,
             })
         }
-
-
     }
 
 
@@ -99,3 +92,4 @@ function Producto () {
 }
 
 export default Producto;
+
