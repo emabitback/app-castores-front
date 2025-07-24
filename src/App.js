@@ -1,28 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import Producto from './Producto';
-import ProductList from './ProductList';
-import Inventario from './Inventario';
-import InventarioAdd from './InventarioAdd';
+import { Row , Col } from 'react-bootstrap';
+import Login from './Components/Login';
 
 function App() {
+
   return (
-          <Container>
-            <Row>
-              <Col lg={5}> 
-                <ProductList/>
-              </Col>
-              
-              <Col lg={7}>
-                <Inventario/>
-              </Col>
-            </Row>
-         </Container>
+    <Row style={ {backgroundColor: '#3D495A', height: '100vh'}}>
+      <Col lg={4}></Col>
+      <Col lg={5} className='position-absolute top-50 start-50 translate-middle'>
+        <Login/>
+      </Col>
+    </Row>
   )
   
 }

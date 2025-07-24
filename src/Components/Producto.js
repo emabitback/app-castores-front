@@ -1,21 +1,13 @@
-import Form from 'react-bootstrap/Form';
-import Button from  'react-bootstrap/Button';
-import ProductList from './ProductList';
+
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import { Container } from 'react-bootstrap';
-import Nav from 'react-bootstrap/Nav';
+import { Nav, Container, Row , Col, Card, Form, Button} from 'react-bootstrap';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import getUrl from './global';
+import getUrl from '../global';
+import SessionControl from './SessionControl';
 
 
 function Producto () {
-
-    const [showAlert, setShowAlert] = useState(false);
 
   const showSwal = () => {
     withReactContent(Swal).fire({
@@ -62,6 +54,7 @@ function Producto () {
 
     return (
     <Container> 
+        <SessionControl/>
         <Row>
             <Card className="text-center">
                 <Card.Header>Agregar Producto</Card.Header>
@@ -83,7 +76,7 @@ function Producto () {
                 </Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-muted">
-                    <Nav.Link href="/">Inicio</Nav.Link>
+                    <Nav.Link href="/admin">Inicio</Nav.Link>
                 </Card.Footer>
             </Card>
         </Row>

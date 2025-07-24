@@ -5,8 +5,11 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App';
-import InventarioAdd from './InventarioAdd';
-import Producto from './Producto';
+import InventarioAdd from './Components/InventarioAdd';
+import Producto from './Components/Producto';
+import Inventario from './Components/Inventario'
+import ProductList from './Components/ProductList';
+import AdminView from './Components/AdminView'
 
 
 const router = createBrowserRouter([
@@ -21,7 +24,20 @@ const router = createBrowserRouter([
     {
     path: "/addinventary",
     element: <InventarioAdd />,
+  },
+      {
+    path: "/inventario",
+    element: <Inventario />,
+  },
+  {
+    path: "/productos",
+    element: <ProductList />,
+  },
+    {
+    path: "/admin",
+    element: <AdminView />,
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

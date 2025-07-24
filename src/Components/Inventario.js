@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import getUrl from './global';
+import getUrl from '../global';
+import SessionControl from './SessionControl';
 
 
 function Inventario () {
@@ -40,30 +41,38 @@ function Inventario () {
                 } else {
                     return (<Badge bg="danger">Salida</Badge>);
                 }
-                
             }  
         },
         { field: 'user.name', headerName: 'Autorizado por', width: 150 ,
+            renderCell: function(data) { return (data.row.user.name) }  
+        },
+        { field: 'user.rol', headerName: 'Rol', width: 150 ,
             renderCell: function(data) {
-                //console.log("PAPA", data)
-                return (data.row.user.name);
+                //console.log("data->", data)
+                const rol = data.row.user.rol
+                if (rol === 1) {
+                    return 'Administrador'
+                } else {
+                    return 'Almacenista'
+                }
             }  
         },
         { field: 'date', headerName: 'Fecha', width: 150 },
     ];
 
     return (
-    <div> 
-      <h1>Inventario</h1>
-            <Button onClick={goTo}>
-              Agregar al Inventario
-            </Button>
-      
+    <div>
+        {
+            (localStorage.getItem('idUser') == 2) ?  <SessionControl/> : <></>
+        }
+        <h1>Inventario</h1>
+        <Button onClick={goTo}>
+        Agregar al Inventario
+        </Button>
+
         <DataGrid
-           rows={post}
-            columns={columns}
-        />
-     
+        rows={post}
+        columns={columns}/>
     </div>
     );
 }

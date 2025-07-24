@@ -1,11 +1,11 @@
 
-import Button from  'react-bootstrap/Button';
-import Badge from  'react-bootstrap/Badge';
+import {Button , Badge} from  'react-bootstrap';
 import { DataGrid }  from '@mui/x-data-grid';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import getUrl from './global';
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import getUrl from '../global';
+
 
 function ProductList () {
     const [post, setPost] = useState([]);
